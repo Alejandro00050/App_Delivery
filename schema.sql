@@ -1,36 +1,35 @@
-DROP TABLE IF EXISTS Usuario;
-DROP TABLE IF EXISTS Restaurante;
-DROP TABLE IF EXISTS Repartidor;
-DROP TABLE IF EXISTS Plato;
-DROP TABLE IF EXISTS Pedido;
 DROP TABLE IF EXISTS Detalle_Pedido;
-
+DROP TABLE IF EXISTS Pedido;
+DROP TABLE IF EXISTS Plato;
+DROP TABLE IF EXISTS Repartidor;
+DROP TABLE IF EXISTS Restaurante;
+DROP TABLE IF EXISTS Usuario;
 
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE Usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     correo VARCHAR(150) UNIQUE NOT NULL,
     telefono VARCHAR(20)
 );
 
 CREATE TABLE Restaurante (
-    id_restaurante INT AUTO_INCREMENT PRIMARY KEY,
+    id_restaurante INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(200) NOT NULL,
     telefono VARCHAR(20)
 );
 
 CREATE TABLE Repartidor (
-    id_repartidor INT AUTO_INCREMENT PRIMARY KEY,
+    id_repartidor INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     telefono VARCHAR(20),
     disponible BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE Plato (
-    id_plato INT AUTO_INCREMENT PRIMARY KEY,
+    id_plato INTEGER PRIMARY KEY AUTOINCREMENT,
     id_restaurante INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
@@ -40,7 +39,7 @@ CREATE TABLE Plato (
 );
 
 CREATE TABLE Pedido (
-    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INTEGER PRIMARY KEY AUTOINCREMENT,
     id_usuario INT NOT NULL,
     id_restaurante INT NOT NULL,
     id_repartidor INT,
@@ -54,7 +53,7 @@ CREATE TABLE Pedido (
 );
 
 CREATE TABLE Detalle_Pedido (
-    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_detalle INTEGER PRIMARY KEY AUTOINCREMENT,
     id_pedido INT NOT NULL,
     id_plato INT NOT NULL,
     cantidad INT NOT NULL DEFAULT 1,
